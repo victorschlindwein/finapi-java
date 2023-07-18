@@ -2,7 +2,12 @@ package com.br.victorschlindwein.finapi.models;
 
 public class Customer {
     private String name;
-    private String document;
+    private final String document;
+
+    public Customer(String name, String document){
+        this.name = name;
+        this.document = document;
+    }
 
     public String getName() {
         return name;
@@ -14,9 +19,5 @@ public class Customer {
 
     public String getDocument() {
         return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
     }
 }
