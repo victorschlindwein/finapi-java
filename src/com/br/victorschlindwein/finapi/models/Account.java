@@ -43,19 +43,13 @@ public class Account {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public int getAgency() {
         return agency;
     }
 
-
     public int getNumber() {
         return number;
     }
-
 
     public double getBalance() {
         return balance;

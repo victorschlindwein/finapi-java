@@ -16,14 +16,13 @@ public class Main {
         System.out.println("Saldo: " + myAccount.getBalance());
 
         myAccount.deposit(7000);
-        System.out.println("Novo saldo: " + myAccount.getBalance());
+        System.out.println("Saldo após depósito: " + myAccount.getBalance());
 
-        myAccount.withdraw(3000, 25.50);
-        System.out.println("Novo novo saldo " + myAccount.getBalance());
+        myAccount.withdraw(3000, 5);
+        System.out.println("Saldo após saque com taxa: " + myAccount.getBalance());
 
         Customer customer2 = new Customer("Luiz Vitor Rova", "156465");
         Account myAccount2 = new Account(customer2, 123, 4894);
-        myAccount2.setCustomer(customer2);
         myAccount2.deposit(5000);
 
         System.out.println("Suas infos 2:");
@@ -34,6 +33,9 @@ public class Main {
         System.out.println("Saldo: " + myAccount2.getBalance());
 
         myAccount2.withdraw(3000);
-        System.out.println("Novo novo saldo " + myAccount2.getBalance());
+        System.out.println("Novo saldo após saque sem taxa: " + myAccount2.getBalance());
+
+        customer2.setName("Vitor Luiz");
+        System.out.println("Seu nome foi alterado para " + customer2.getName());
     }
 }
