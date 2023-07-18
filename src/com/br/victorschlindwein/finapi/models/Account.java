@@ -3,7 +3,7 @@ package com.br.victorschlindwein.finapi.models;
 import java.util.Objects;
 
 public class Account {
-    private Customer customer;
+    private final Customer customer;
     private final int agency;
     private final int number;
     private double balance;
