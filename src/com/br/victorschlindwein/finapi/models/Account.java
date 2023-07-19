@@ -2,7 +2,7 @@ package com.br.victorschlindwein.finapi.models;
 
 import java.util.Objects;
 
-public class Account {
+public abstract class Account {
     private Customer customer;
     private int agency;
     private int number;
@@ -38,6 +38,8 @@ public class Account {
     public void withdraw(double value, double tax){
         withdraw(value + tax);
     }
+
+    public abstract void debitMonthlyFee(double fee);
 
     public Customer getCustomer() {
         return customer;

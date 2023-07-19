@@ -5,6 +5,13 @@ public class InvestmentAccount extends Account {
         super(customer, agency, number);
     }
 
+    @Override
+    public void debitMonthlyFee(double fee) {
+        if (getBalance() < 10_000) {
+            withdraw(fee);
+        }
+    }
+
     public void addInterest(double interestRate){
         double interestValue = getBalance() * interestRate / 100;
         deposit(interestValue);

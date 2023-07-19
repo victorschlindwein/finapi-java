@@ -8,6 +8,11 @@ public class SpecialAccount extends Account {
     }
 
     @Override
+    public void debitMonthlyFee(double fee) {
+        withdraw(fee);
+    }
+
+    @Override
     public double getAvaiableBalance() {
         return getBalance() + getLimitValue();
     }

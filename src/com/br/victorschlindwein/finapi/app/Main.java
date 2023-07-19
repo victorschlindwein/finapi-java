@@ -39,5 +39,26 @@ public class Main {
         caixaEletronico.printBalance(myAccount2);
         System.out.println("--------------------------------");
         caixaEletronico.printBalance(myAccount);
+
+        System.out.println("Debitando a tarifa mensal");
+        myAccount.debitMonthlyFee(10);
+        myAccount2.debitMonthlyFee(10);
+
+        System.out.println("Suas infos:");
+        System.out.println("Nome: " + myAccount.getCustomer().getName());
+        System.out.println("Documento: " + myAccount.getCustomer().getDocument());
+        System.out.println("Agência: " + myAccount.getAgency());
+        System.out.println("Número: " + myAccount.getNumber());
+        System.out.println("Saldo: " + myAccount.getBalance());
+
+        System.out.println("--------------------------------");
+
+        System.out.println("Minhas infos:");
+        System.out.println("Nome: " + myAccount2.getCustomer().getName());
+        System.out.println("Documento: " + myAccount2.getCustomer().getDocument());
+        System.out.println("Agência: " + myAccount2.getAgency());
+        System.out.println("Número: " + myAccount2.getNumber());
+        System.out.println("Saldo: " + myAccount2.getBalance());
+
     }
 }
