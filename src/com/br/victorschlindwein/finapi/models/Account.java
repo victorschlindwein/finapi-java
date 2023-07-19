@@ -3,9 +3,9 @@ package com.br.victorschlindwein.finapi.models;
 import java.util.Objects;
 
 public class Account {
-    private final Customer customer;
-    private final int agency;
-    private final int number;
+    private Customer customer;
+    private int agency;
+    private int number;
     private double balance;
 
     public Account(Customer customer, int agency, int number){
@@ -28,7 +28,7 @@ public class Account {
             throw new IllegalArgumentException("Valor deve ser maior do que zero");
         }
 
-        if(balance - value < 0){
+        if(getAvaiableBalance() - value < 0){
             throw new IllegalStateException("Saldo insuficiente");
         }
 
@@ -53,5 +53,8 @@ public class Account {
 
     public double getBalance() {
         return balance;
+    }
+    public double getAvaiableBalance(){
+        return getBalance();
     }
 }
