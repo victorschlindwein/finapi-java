@@ -1,9 +1,6 @@
 package com.br.victorschlindwein.finapi.app;
 
-import com.br.victorschlindwein.finapi.models.Account;
-import com.br.victorschlindwein.finapi.models.Customer;
-import com.br.victorschlindwein.finapi.models.InvestmentAccount;
-import com.br.victorschlindwein.finapi.models.SpecialAccount;
+import com.br.victorschlindwein.finapi.models.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,19 +26,18 @@ public class Main {
         SpecialAccount myAccount2 = new SpecialAccount(customer2, 101, 123456, 3000);
 
         System.out.println("Minhas infos:");
-        System.out.println("Nome: " + myAccount.getCustomer().getName());
-        System.out.println("Documento: " + myAccount.getCustomer().getDocument());
-        System.out.println("Agência: " + myAccount.getAgency());
-        System.out.println("Número: " + myAccount.getNumber());
-        System.out.println("Saldo: " + myAccount.getBalance());
+        System.out.println("Nome: " + myAccount2.getCustomer().getName());
+        System.out.println("Documento: " + myAccount2.getCustomer().getDocument());
+        System.out.println("Agência: " + myAccount2.getAgency());
+        System.out.println("Número: " + myAccount2.getNumber());
+        System.out.println("Saldo: " + myAccount2.getBalance());
 
         System.out.println("--------------------------------");
 
-        myAccount2.deposit(valorDepositado);
-        System.out.println("Saldo total " + myAccount2.getBalance());
-        System.out.println("Valor cheque especial " + myAccount2.getLimitValue());
-        double valorSacado = 18_000;
-        myAccount2.withdraw(valorSacado);
-        System.out.println("Novo valor disponivel após saque de 18k é: " + myAccount2.getBalance());
+        CaixaEletronico caixaEletronico = new CaixaEletronico();
+        myAccount2.deposit(10_000);
+        caixaEletronico.printBalance(myAccount2);
+        System.out.println("--------------------------------");
+        caixaEletronico.printBalance(myAccount);
     }
 }
