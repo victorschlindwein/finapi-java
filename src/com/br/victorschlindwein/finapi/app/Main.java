@@ -6,22 +6,30 @@ import com.br.victorschlindwein.finapi.models.exceptions.InsufficientFundsExcept
 import com.br.victorschlindwein.finapi.models.payments.Boleto;
 import com.br.victorschlindwein.finapi.models.payments.Holerite;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
         Customer specialCustomer = new Customer("Conta especial", "98392");
-        SpecialAccount specialAccount = new SpecialAccount(specialCustomer, 101, 123456, 3000);
+        SpecialAccount specialAccount = new SpecialAccount(specialCustomer, 101, 123456, new BigDecimal("3000"));
+        specialCustomer.setRendimentoAnual(new BigDecimal("15000"));
+        specialCustomer.setCustomerType(CustomerType.JURIDICA);
+        System.out.println(specialCustomer.getCustomerType());
+        specialCustomer.setLastModifiedDate(LocalDateTime.parse("2023-07-20T13:00:02"));
+        System.out.println(specialCustomer.getLastModifiedDate());
 
         try {
             CaixaEletronico caixaEletronico = new CaixaEletronico();
-            specialAccount.deposit(10_000);
+            specialAccount.deposit(new BigDecimal("10000"));
             caixaEletronico.printBalance(specialAccount);
 
-            Holerite holeriteBacana = new Holerite(specialAccount.getCustomer(), 50, 60);
+            Holerite holeriteBacana = new Holerite(specialAccount.getCustomer(), new BigDecimal("50"), new BigDecimal("60"));
             caixaEletronico.pay(holeriteBacana, specialAccount);
             System.out.println("Saldo após pagamento do holerite no valor de: " + (50 * 60));
             caixaEletronico.printBalance(specialAccount);
 
-            Boleto boletoSuave = new Boleto(specialCustomer, 20_000);
+            Boleto boletoSuave = new Boleto(specialCustomer, new BigDecimal("20000"));
             caixaEletronico.pay(boletoSuave, specialAccount);
             System.out.println("Boleto pago: " + boletoSuave.isPaid());
             caixaEletronico.printBalance(specialAccount);

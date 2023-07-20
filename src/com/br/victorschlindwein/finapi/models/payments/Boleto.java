@@ -2,18 +2,20 @@ package com.br.victorschlindwein.finapi.models.payments;
 
 import com.br.victorschlindwein.finapi.models.Customer;
 
+import java.math.BigDecimal;
+
 public class Boleto implements PayableDocument, ReversibleDocument {
 
     private Customer beneficiario;
-    private double value;
+    private BigDecimal value;
     private boolean isPaid;
 
     @Override
-    public double getTotalValue() {
+    public BigDecimal getTotalValue() {
         return value;
     }
 
-    public Boleto(Customer beneficiario, double value) {
+    public Boleto(Customer beneficiario, BigDecimal value) {
         this.beneficiario = beneficiario;
         this.value = value;
     }

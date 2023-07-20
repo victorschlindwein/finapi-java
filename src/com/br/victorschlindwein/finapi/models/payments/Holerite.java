@@ -2,21 +2,23 @@ package com.br.victorschlindwein.finapi.models.payments;
 
 import com.br.victorschlindwein.finapi.models.Customer;
 
+import java.math.BigDecimal;
+
 public class Holerite implements PayableDocument {
     private Customer funcionaro;
-    private double hourValue;
-    private int hourQty;
+    private BigDecimal hourValue;
+    private BigDecimal hourQty;
     private boolean isPaid;
 
-    public Holerite(Customer funcionaro, double hourValue, int hourQty) {
+    public Holerite(Customer funcionaro, BigDecimal hourValue, BigDecimal hourQty) {
         this.funcionaro = funcionaro;
         this.hourValue = hourValue;
         this.hourQty = hourQty;
     }
 
     @Override
-    public double getTotalValue() {
-        return hourValue * hourQty;
+    public BigDecimal getTotalValue() {
+        return hourValue.multiply(new BigDecimal(String.valueOf(hourQty)));
     }
 
     @Override

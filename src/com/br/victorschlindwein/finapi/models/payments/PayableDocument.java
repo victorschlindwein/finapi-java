@@ -1,7 +1,9 @@
 package com.br.victorschlindwein.finapi.models.payments;
 
+import java.math.BigDecimal;
+
 public interface PayableDocument {
-    double getTotalValue();
+    BigDecimal getTotalValue();
     boolean isPaid();
     void payDocument();
     default void printRecipt(){
