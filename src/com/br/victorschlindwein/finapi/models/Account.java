@@ -1,5 +1,7 @@
 package com.br.victorschlindwein.finapi.models;
 
+import com.br.victorschlindwein.finapi.models.exceptions.InsufficientFundsException;
+
 import java.util.Objects;
 
 public abstract class Account {
@@ -7,6 +9,9 @@ public abstract class Account {
     private int agency;
     private int number;
     private double balance;
+
+    public Account(){
+    }
 
     public Account(Customer customer, int agency, int number){
         Objects.requireNonNull(customer);
@@ -29,7 +34,7 @@ public abstract class Account {
         }
 
         if(getAvaiableBalance() - value < 0){
-            throw new IllegalStateException("Saldo insuficiente");
+            throw new InsufficientFundsException("Saldo insuficiente");
         }
 
         balance = balance - value;
