@@ -18,9 +18,9 @@ public class Main3 {
 //        banco.getContas().sort(Comparator.comparingInt(
 //                conta -> conta.getNumero()));
 
-        banco.getContas().sort(Comparator.comparingInt(Account::getNumber));
+        banco.getAccounts().sort(Comparator.comparingInt(Account::getNumber));
 
-        for (Account conta : banco.getContas()) {
+        for (Account conta : banco.getAccounts()) {
             System.out.println(conta.getAgency() + "/" + conta.getNumber());
         }
     }
